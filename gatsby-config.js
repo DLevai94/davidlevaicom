@@ -1,12 +1,14 @@
 module.exports = {
   siteMetadata: {
-    // edit below
-    title: `Gatsby Starter Personal Blog`,
-    author: `Kyle Matthews`,
-    description: `A starter personal blog with styled components, dark mode, and Netlify CMS.`,
-    siteUrl: `https://gatsby-starter-blog-demo.netlify.com/`,
+    title: `Coding, Freelancing & Productivity`,
+    author: `Dávid Lévai`,
+    description: `A blog about coding, freelancing, business & productivity.`,
+    siteUrl: `https://davidlevai.com/`,
     social: {
-      twitter: `kylemathews`,
+      twitter: `davidlevaicodes`,
+      instagram: `davidlevai.codes`,
+      linkedin: `dlevai94`,
+      github: `dlevai94`,
     },
   },
   plugins: [
@@ -63,8 +65,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        // edit below
-        // trackingId: `ADD YOUR TRACKING ID HERE`,
+        trackingId: `UA-50359249-4`,
       },
     },
     {
@@ -74,10 +75,9 @@ module.exports = {
         short_name: `GatsbyJS`,
         start_url: `/`,
         background_color: `#ffffff`,
-        theme_color: `#663399`,
+        theme_color: `#391f70`,
         display: `minimal-ui`,
-        // edit below
-        icon: `content/assets/gatsby-icon.png`,
+        icon: `content/assets/davidlevailogo.png`,
       },
     },
     {
