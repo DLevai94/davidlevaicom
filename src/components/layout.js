@@ -1,6 +1,8 @@
 import React from "react"
 import { Link } from "gatsby"
+import { StaticQuery, graphql } from "gatsby"
 import styled from "styled-components"
+import { FiInstagram, FiTwitter, FiGithub, FiLinkedin } from "react-icons/fi"
 
 import { rhythm, scale } from "../utils/typography"
 
@@ -54,27 +56,86 @@ class Layout extends React.Component {
       )
     }
     return (
-      <Wrapper>
-        <div
-          style={{
-            marginLeft: `auto`,
-            marginRight: `auto`,
-            maxWidth: rhythm(24),
-            padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
-          }}
-        >
-          <header>{header}</header>
-          <main>{children}</main>
-        </div>
-        <Footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </Footer>
-      </Wrapper>
+      <StaticQuery
+        query={layoutQuery}
+        render={data => {
+          const { title, social, author } = data.site.siteMetadata
+          return (
+            <Wrapper>
+              <div
+                style={{
+                  marginLeft: `auto`,
+                  marginRight: `auto`,
+                  maxWidth: rhythm(24),
+                  padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
+                }}
+              >
+                <header>{header}</header>
+                <main>{children}</main>
+              </div>
+              <Footer>
+                © {new Date().getFullYear()}, {`${author} - ${title} `}
+                <a
+                  style={{
+                    boxShadow: "none",
+                    marginRight: `0.5em`,
+                    color: "#000",
+                  }}
+                  href={`https://instagram.com/${social.twitter}`}
+                >
+                  <FiInstagram />
+                </a>
+                <a
+                  style={{
+                    boxShadow: "none",
+                    marginRight: `0.5em`,
+                    color: "#000",
+                  }}
+                  href={`https://twitter.com/${social.twitter}`}
+                >
+                  <FiTwitter />
+                </a>
+                <a
+                  style={{
+                    boxShadow: "none",
+                    marginRight: `0.5em`,
+                    color: "#000",
+                  }}
+                  href={`https://linkedin.com/in/${social.twitter}`}
+                >
+                  <FiLinkedin />
+                </a>
+                <a
+                  style={{ boxShadow: "none", color: "#000" }}
+                  href={`https://github.com/${social.twitter}`}
+                >
+                  <FiGithub />
+                </a>
+              </Footer>
+            </Wrapper>
+          )
+        }}
+      />
     )
   }
 }
+
+const layoutQuery = graphql`
+  query LayoutQuery {
+    site {
+      siteMetadata {
+        author
+        title
+        social {
+          twitter
+          instagram
+          linkedin
+          github
+        }
+      }
+    }
+  }
+`
 
 const Wrapper = styled.div`
   min-height: 100vh;

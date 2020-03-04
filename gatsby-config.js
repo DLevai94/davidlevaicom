@@ -16,9 +16,9 @@ module.exports = {
     `gatsby-plugin-styled-components`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-    `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-feed-mdx`,
+    `gatsby-plugin-advanced-sitemap`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -42,6 +42,7 @@ module.exports = {
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 590,
+              withWebp: true,
             },
           },
           {
@@ -71,15 +72,29 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
-        short_name: `GatsbyJS`,
+        name: `Dávid Lévai Blog`,
+        short_name: `Dávid Lévai`,
         start_url: `/`,
+        lang: `en`,
         background_color: `#ffffff`,
         theme_color: `#391f70`,
-        display: `minimal-ui`,
-        icon: `content/assets/davidlevailogo.png`,
+        display: `standalone`,
+        icon: `content/assets/favicon.ico`,
+        icons: [
+          {
+            src: "android-chrome-192x192.png",
+            sizes: "192x192",
+            type: "image/png",
+          },
+          {
+            src: "android-chrome-384x384.png",
+            sizes: "384x384",
+            type: "image/png",
+          },
+        ],
       },
     },
+    `gatsby-plugin-offline`,
     {
       resolve: `gatsby-plugin-typography`,
       options: {

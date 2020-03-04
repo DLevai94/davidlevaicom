@@ -1,14 +1,8 @@
-/**
- * Bio component that queries for data
- * with Gatsby's StaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/static-query/
- */
-
 import React from "react"
 import { StaticQuery, graphql } from "gatsby"
 import Image from "gatsby-image"
 import styled from "styled-components"
+import { FiInstagram, FiTwitter, FiGithub, FiLinkedin } from "react-icons/fi"
 
 import { rhythm } from "../utils/typography"
 
@@ -34,11 +28,48 @@ function Bio() {
               }}
             />
             <p>
-              Written by <strong>{author}</strong> who lives and works in San
-              Francisco building useful things.
-              {` `}
-              <a href={`https://twitter.com/${social.twitter}`}>
-                You should follow him on Twitter
+              Hey{" "}
+              <span role="img" aria-label="wave emoji">
+                👋
+              </span>{" "}
+              I'm <strong>{author}</strong> and I write about software
+              development, freelancing & productivity.
+              <br />
+              <a
+                style={{
+                  boxShadow: "none",
+                  marginRight: `0.5em`,
+                  color: "#000",
+                }}
+                href={`https://instagram.com/${social.twitter}`}
+              >
+                <FiInstagram />
+              </a>
+              <a
+                style={{
+                  boxShadow: "none",
+                  marginRight: `0.5em`,
+                  color: "#000",
+                }}
+                href={`https://twitter.com/${social.twitter}`}
+              >
+                <FiTwitter />
+              </a>
+              <a
+                style={{
+                  boxShadow: "none",
+                  marginRight: `0.5em`,
+                  color: "#000",
+                }}
+                href={`https://linkedin.com/in/${social.twitter}`}
+              >
+                <FiLinkedin />
+              </a>
+              <a
+                style={{ boxShadow: "none", color: "#000" }}
+                href={`https://github.com/${social.twitter}`}
+              >
+                <FiGithub />
               </a>
             </p>
           </Container>
@@ -62,6 +93,9 @@ const bioQuery = graphql`
         author
         social {
           twitter
+          instagram
+          linkedin
+          github
         }
       }
     }
